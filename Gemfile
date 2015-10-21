@@ -8,6 +8,8 @@ gem 'uglifier',     '2.7.2'
 gem 'coffee-rails', '4.1.0'
 gem 'jquery-rails', '4.0.5'
 gem 'turbolinks',   '2.5.3'
+gem 'authlogic'
+gem 'scrypt'
 
 group :doc do
   gem 'sdoc', '0.4.1'
