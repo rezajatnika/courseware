@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   after_initialize :set_default_role, if: :new_record?
 
+  # Associations
+  has_many :enrollments, foreign_key: 'student_id'
+  has_many :courses, foreign_key: 'lecturer_id', dependent: :destroy
+
   # User authentication
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::SCrypt
