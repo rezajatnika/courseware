@@ -14,6 +14,22 @@ class User < ActiveRecord::Base
     find_by_username(login) || find_by_email(login)
   end
 
+  def enroll(course)
+    # TODO: Implement course enrollment
+    enrollments.create(course_id: course.id)
+  end
+
+  def unenroll(course)
+    # TODO: Implement course unenrollment
+    enrollments.find_by(course_id: course.id).destroy
+  end
+
+  def enroll?(course)
+    # TODO: Implement user enroll?
+    # returns true if user already enroll the course
+    !self.enrollments.find_by(course_id: course.id).nil?
+  end
+
   # Roles
   enum role: [:student, :lecturer, :admin]
 

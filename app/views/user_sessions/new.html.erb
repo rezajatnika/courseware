@@ -1,0 +1,16 @@
+<div row>
+  <div column="4 +4">
+    <h2>Login</h2>
+    <%= form_for @user_session, url: user_session_path do |f| %>
+      <div class="fieldForm">
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </div>
+      <div class="fieldForm">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+      <%= f.submit 'Login' %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+// Site Header
+
+.siteHeader {
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-size: 22px;
+}
+
+.nav {
+  text-align: right;
+  margin-top: 10px;
+
+  li {
+    display: inline;
+    line-height: 3;
+    margin-left: 25px;
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+}
+
+.siteContent {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.siteFooter {
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+
+// Form
+.fieldForm {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

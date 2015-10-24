@@ -1,12 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Courseware</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= yield %>
+  <header container class="siteHeader">
+    <div row>
+      <h1 column="4" class="logo">Courseware</h1>
+      <nav column="8" class="nav">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Courses</a></li>
+          <% if current_user %>
+            <li>
+              <div class="dropdown dropdown--small" tabindex="0">
+                <%= current_user.username %>
+                <ul class="dropdown-content">
+                  <li>Account</li>
+                  <li>Account</li>
+                  <li>Account</li>
+                </ul>
+              </div>
+            </li>
+            <li><%= link_to 'Logout', user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Login', new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div container>
+    <% flash.each do |key, message| %>
+      <div class="alert alert--<%= key %>">
+        <a href="#" class="alert-close">&times;</a>
+        <p><%= message %></p>
+      </div>
+    <% end %>
+    <%= yield %>
+  </div>
 </body>
 </html>
