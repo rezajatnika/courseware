@@ -20,10 +20,22 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    redirect_to login_path unless current_user
+    unless current_user
+      store_location
+      redirect_back_or_default(root_path, 'Please login to access this page')
+    end
   end
 
   def require_logout
     redirect_to root_path if current_user
+  end
+
+  def redirect_back_or_default(default, message)
+    redirect_to((session[:return_to] || default), warning: message)
+    session[:return_to] = nil
+  end
+
+  def store_location
+    session[:return_to] = request.url
   end
 end

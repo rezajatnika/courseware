@@ -1,0 +1,16 @@
+<main container>
+  <h3>Available Courses</h3>
+  <div row>
+    <% if @courses.any? %>
+      <% @courses.order(code: :asc).each do |course| %>
+        <div column="4" class="course">
+          <%= link_to course_path(course) do %>
+            <h3><%= course.code.upcase %></h3>
+          <% end %>
+          <p><%= course.name %></p>
+          <a href="#" class="button button--sm">Enroll</a>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</main>

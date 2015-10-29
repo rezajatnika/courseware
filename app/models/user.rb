@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, if: :new_record?
 
   # Associations
-  has_many :enrollments, foreign_key: 'student_id'
+  has_many :enrollments, foreign_key: 'student_id', dependent: :destroy
   has_many :courses, foreign_key: 'lecturer_id', dependent: :destroy
 
   # User authentication
@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     # TODO: Implement user enroll?
     # returns true if user already enroll the course
     !self.enrollments.find_by(course_id: course.id).nil?
+  end
+
+  def lecturing?(course)
+    course.lecturer == self
   end
 
   # Roles

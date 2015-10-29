@@ -32,9 +32,22 @@
   padding-top: 15px;
 }
 
+// Dropdown
+li.drop-down {
+  display: block;
+}
 
 // Form
 .fieldForm {
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+// Course
+
+.course {
+  margin-bottom: 15px;
+  a > h3 {
+    color: #4591aa;
+  }
 }

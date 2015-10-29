@@ -1,0 +1,20 @@
+<main container>
+  <h3><%= @course.code.upcase %></h3>
+  <h4><%= @course.name %></h4>
+  <% unless current_user.lecturing?(@course) %>
+  <div row>
+    <div column="2">
+      <%= form_for current_user.enrollments.build do |f| %>
+        <%= hidden_field_tag :course_id, @course.id %>
+        <% if current_user.enroll?(@course) %>
+          <%= f.submit 'Enroll', class: 'button button--sm', disabled: '' %>
+        <% else %>
+          <%= f.submit 'Enroll', class: 'button button--sm' %>
+        <% end %>
+      <% end %>
+    </div>
+    <p>You are already enrolled to this course.</p>
+  <% end %>
+  </div>
+  <h2>Course Updates and News</h2>
+</main>

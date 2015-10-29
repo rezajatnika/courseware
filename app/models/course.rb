@@ -8,4 +8,8 @@ class Course < ActiveRecord::Base
   # Validations
   validates :name, presence: true
   validates :code, presence: true
+
+  def is_lecturer?
+    lecturer == current_user
+  end
 end

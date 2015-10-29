@@ -1,0 +1,24 @@
+<div row>
+  <div column="4 +4">
+    <h2>Register</h2>
+    <%= form_for @user do |f| %>
+      <div class="fieldForm">
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </div>
+      <div class="fieldForm">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </div>
+      <div class="fieldForm">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+      <div class="fieldForm">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+      <%= f.submit 'Register' %>
+    <% end %>
+  </div>
+</div>
