@@ -16,4 +16,8 @@
     </div>
   <% end %>
   <h2>Course Updates and News</h2>
+  <% @feeds.order(created_at: :desc).each do |feed| %>
+    <small><%= local_time(feed.created_at) %></small>
+    <p><%= feed.content %></p>
+  <% end %>
 </main>

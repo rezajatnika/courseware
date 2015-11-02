@@ -7,5 +7,6 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @feeds = @course.feeds
   end
 end

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :enrollments, foreign_key: 'student_id', dependent: :destroy
   has_many :courses, foreign_key: 'lecturer_id', dependent: :destroy
   has_many :enrolled_courses, through: :enrollments, source: :course
+  has_many :feeds, foreign_key: 'lecturer_id', dependent: :destroy
 
   # User authentication
   acts_as_authentic do |c|
