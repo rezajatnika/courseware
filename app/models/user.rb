@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   # Associations
   has_many :enrollments, foreign_key: 'student_id', dependent: :destroy
   has_many :courses, foreign_key: 'lecturer_id', dependent: :destroy
+  has_many :enrolled_courses, through: :enrollments, source: :course
 
   # User authentication
   acts_as_authentic do |c|
@@ -28,10 +29,6 @@ class User < ActiveRecord::Base
     # TODO: Implement user enroll?
     # returns true if user already enroll the course
     !self.enrollments.find_by(course_id: course.id).nil?
-  end
-
-  def lecturing?(course)
-    course.lecturer == self
   end
 
   # Roles

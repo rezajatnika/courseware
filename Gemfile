@@ -10,6 +10,7 @@ gem 'jquery-rails', '4.0.5'
 gem 'turbolinks',   '2.5.3'
 gem 'authlogic',    '3.4.6'
 gem 'scrypt',       '2.0.2'
+gem 'responders',   '2.1.0'
 
 group :doc do
   gem 'sdoc', '0.4.1'

@@ -9,4 +9,9 @@ Rails.application.routes.draw do
   resources :courses
   resources :users
   resources :enrollments
+
+  # APIs
+  namespace :api, defaults: {format: :json} do
+    resources :courses
+  end
 end

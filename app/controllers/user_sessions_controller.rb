@@ -9,7 +9,8 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      redirect_to root_path, success: 'Logged in!'
+      # redirect_to root_path, success: 'Logged in!'
+      redirect_back_or(root_path)
     else
       flash.now[:error] = 'Invalid username or password.'
       render :new

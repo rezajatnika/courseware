@@ -9,7 +9,17 @@ class Course < ActiveRecord::Base
   validates :name, presence: true
   validates :code, presence: true
 
-  def is_lecturer?
-    lecturer == current_user
+  def as_json(options = {})
+    super(only: [:id, :name, :code])
+  end
+
+  private
+
+  def current_permission
+    @current_permission ||= Permission.new(current_user)
+  end
+
+  def authorize
+    # TODO: Implement authorize method on course model
   end
 end
