@@ -6,7 +6,6 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
-    @feeds = @course.feeds
+    @course = Course.find_by_slug(params[:id])
   end
 end

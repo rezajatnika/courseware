@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require concise/concise.scss
+ *= require trix.css
  *= require_tree .
  *= require_self
  */

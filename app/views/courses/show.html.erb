@@ -5,7 +5,7 @@
     <div row>
       <div column="2">
         <%= form_for current_user.enrollments.build do |f| %>
-          <%= hidden_field_tag :course_id, @course.id %>
+          <%= f.hidden_field :course_id, value: @course.encode_course %>
           <% if current_user.enroll?(@course) %>
             <%= f.submit 'Enrolled', class: 'button button--sm', disabled: '' %>
           <% else %>
@@ -15,9 +15,26 @@
       </div>
     </div>
   <% end %>
+
   <h2>Course Updates and News</h2>
-  <% @feeds.order(created_at: :desc).each do |feed| %>
-    <small><%= local_time(feed.created_at) %></small>
-    <p><%= feed.content %></p>
+  <% @course.feeds.order(created_at: :desc).each do |feed| %>
+    <small><%= local_time(feed.created_at) %> by <%= feed.lecturer.username %></small>
+    <%= feed.content.html_safe %>
+    <hr>
   <% end %>
+
+  <% if current_user.lecturer? %>
+    <h4>Create New Feed</h4>
+    <div row>
+      <div column="6">
+        <%= form_for [@course, current_user.feeds.build] do |f| %>
+          <div class="fieldForm">
+            <%= f.hidden_field :content %>
+            <trix-editor input="feed_content"></trix-editor>
+          </div>
+          <%= f.submit 'Submit', class: 'button button--sm' %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
 </main>

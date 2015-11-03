@@ -43,4 +43,8 @@ class ApplicationController < ActionController::Base
   def store_location
     session[:return_to] = request.url if request.get?
   end
+
+  def decode(string)
+    Base64.urlsafe_decode64(string)
+  end
 end

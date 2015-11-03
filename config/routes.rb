@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   resource :user_session, only: [:new, :create, :destroy]
 
   # Resources
-  resources :courses
+  resources :courses do
+    resources :feeds
+  end
+
   resources :users
   resources :enrollments
 
