@@ -1,0 +1,16 @@
+<div row>
+  <div column="4">
+    <h2>New Course</h2>
+    <%= form_for @course do |f| %>
+      <div class="fieldForm">
+        <%= f.label :name, 'Course Name' %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="fieldForm">
+        <%= f.label :code, 'Course Code' %>
+        <%= f.text_field :code %>
+      </div>
+      <%= f.submit 'Submit' %>
+    <% end %>
+  </div>
+</div>

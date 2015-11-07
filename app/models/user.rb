@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     !self.enrollments.find_by(course_id: course.id).nil?
   end
 
+  def create_feed(content, course)
+    feeds.create(content: content, course_id: course.id)
+  end
+
   # Roles
   enum role: [:student, :lecturer, :admin]
 

@@ -23,4 +23,5 @@ end
 group :development do
   gem 'web-console', '2.2.1'
   gem 'spring',      '1.4.0'
+  gem 'thin'
 end

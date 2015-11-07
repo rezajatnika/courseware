@@ -16,14 +16,14 @@
     </div>
   <% end %>
 
-  <h2>Course Updates and News</h2>
+  <h3>Course Updates and News</h3>
   <% @course.feeds.order(created_at: :desc).each do |feed| %>
-    <small><%= local_time(feed.created_at) %> by <%= feed.lecturer.username %></small>
+    <p><%= local_time(feed.created_at) %> by <%= feed.lecturer.username %></p>
     <%= feed.content.html_safe %>
     <hr>
   <% end %>
 
-  <% if current_user.lecturer? %>
+  <% if allow?(:feeds, :new) %>
     <h4>Create New Feed</h4>
     <div row>
       <div column="6">

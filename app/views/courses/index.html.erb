@@ -8,9 +8,12 @@
             <h3><%= course.code.upcase %></h3>
           <% end %>
           <p><%= course.name %></p>
-          <a href="#" class="button button--sm">Enroll</a>
+          <a href="#" class="button button--sm">Details</a>
         </div>
       <% end %>
     <% end %>
   </div>
+  <% if allow?(:courses, :new) %>
+    <%= link_to 'New Course', new_course_path %>
+  <% end %>
 </main>
