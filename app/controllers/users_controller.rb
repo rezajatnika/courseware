@@ -7,8 +7,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      redirect_to root_path, success: 'You are now registered.'
+    if @user.save_without_session_maintenance
+      @user.deliver_activation_instructions!
+      redirect_to root_path, success: 'Please check your email!'
     else
       render :new
     end

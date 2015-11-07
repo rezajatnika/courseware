@@ -36,6 +36,16 @@ class User < ActiveRecord::Base
     feeds.create(content: content, course_id: course.id)
   end
 
+  def activate!
+    self.active = true
+    save
+  end
+
+  def deliver_activation_instructions!
+    reset_perishable_token!
+    UserMailer.activation_instructions(self).deliver_later
+  end
+
   # Roles
   enum role: [:student, :lecturer, :admin]
 

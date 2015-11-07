@@ -18,6 +18,7 @@ end
 group :development, :test do
   gem 'byebug',       '6.0.2'
   gem 'quiet_assets', '1.1.0'
+  gem 'hirb'
 end
 
 group :development do

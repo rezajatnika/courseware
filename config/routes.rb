@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :courses
   end
+
+  # Activations
+  get 'activate/:activation_code', to: 'activations#create', as: 'activate'
 end
