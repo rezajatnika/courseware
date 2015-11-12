@@ -16,7 +16,7 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'byebug',       '6.0.2'
+  gem 'byebug', '6.0.2'
 end
 
 group :development do
