@@ -4,7 +4,7 @@ class ActivationsController < ApplicationController
   def create
     @user = User.find_by_perishable_token(params[:activation_code])
     if @user.active?
-      raise Exception
+      redirect_to root_path, success: 'Your account already activated!'
     elsif @user.activate!
       UserSession.create(@user, false)
       redirect_to root_path, success: 'Welcome to Courseware!'
