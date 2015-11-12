@@ -163,7 +163,7 @@ PLATFORMS
 DEPENDENCIES
   authlogic (= 3.4.6)
   byebug (= 6.0.2)
-  hirb
+  hirb (= 0.7.3)
   jquery-rails (= 4.0.5)
   local_time (= 1.0.3)
   pg (= 0.18.3)
@@ -173,7 +173,7 @@ DEPENDENCIES
   sass-rails (= 5.0.4)
   sdoc (= 0.4.1)
   spring (= 1.4.0)
-  thin
+  thin (= 1.6.4)
   turbolinks (= 2.5.3)
   uglifier (= 2.7.2)
   web-console (= 2.2.1)

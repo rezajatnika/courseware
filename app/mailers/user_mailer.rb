@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
     @user = user
     mail(to: @user.email, subject: 'Activation Instructions') do |format|
       format.text
-      fomart.html
+      format.html
     end
   end
 end

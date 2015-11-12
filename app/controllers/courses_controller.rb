@@ -8,6 +8,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = current_resource
+    render(file: 'public/404.html') if @course.nil?
   end
 
   def new

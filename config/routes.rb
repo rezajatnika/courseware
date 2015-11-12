@@ -7,15 +7,15 @@ Rails.application.routes.draw do
 
   # Resources
   resources :courses do
-    resources :feeds
+    resources :feeds, only: [:create, :destroy, :update]
   end
 
-  resources :users
-  resources :enrollments
+  resources :users, only: [:new, :create]
+  resources :enrollments, only: [:create, :destroy]
 
   # APIs
   namespace :api, defaults: {format: :json} do
-    resources :courses
+    resources :courses, only: [:index, :show]
   end
 
   # Activations
