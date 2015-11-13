@@ -16,12 +16,12 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'byebug', '6.0.2'
+  gem 'byebug',      '6.0.2'
+  gem 'spring',      '1.4.0'
+  gem 'web-console', '2.2.1'
 end
 
 group :development do
-  gem 'web-console',  '2.2.1'
-  gem 'spring',       '1.4.0'
   gem 'thin',         '1.6.4'
   gem 'hirb',         '0.7.3'
   gem 'quiet_assets', '1.1.0'

@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   # User authentication
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::SCrypt
+    c.perishable_token_valid_for = 1.weeks
+    c.login_field = :username
   end
 
   def self.find_login_by(login)
@@ -17,18 +19,14 @@ class User < ActiveRecord::Base
   end
 
   def enroll(course)
-    # TODO: Implement course enrollment
     enrollments.create(course_id: course.id)
   end
 
   def unenroll(course)
-    # TODO: Implement course unenrollment
     enrollments.find_by(course_id: course.id).destroy
   end
 
   def enroll?(course)
-    # TODO: Implement user enroll?
-    # returns true if user already enroll the course
     !self.enrollments.find_by(course_id: course.id).nil?
   end
 

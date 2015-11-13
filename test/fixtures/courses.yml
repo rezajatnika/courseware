@@ -1,9 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  code: MyString
-
-two:
-  name: MyString
-  code: MyString
+tc101:
+  name: Test Course
+  code: tc-101
+  lecturer: lecturer

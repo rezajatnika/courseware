@@ -1,10 +1,9 @@
 Hello, <%= @user.username %>!
-=============================
 
 Thanks for joining Courseware.
-Click link below to activate your account:
+This is your account activation link:
 
-<%= link_to 'Activate', activate_url(@user.perishable_token) %>
+<%= activate_url(@user.perishable_token) %>
 
 If the above URL does not work try copying and pasting it into your browser.
 If you continue to have problem, please feel free to contact us.
