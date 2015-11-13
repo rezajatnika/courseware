@@ -14,61 +14,61 @@ class UserTest < ActiveSupport::TestCase
     @user.destroy if @user
   end
 
-  def test_with_valid_user
+  test 'with_valid_user' do
     assert @user.valid?
   end
 
-  def test_without_username
+  test 'without_username' do
     @user.username = ''
     assert_not @user.valid?
   end
 
-  def test_without_email
+  test 'without_email' do
     @user.email = ''
     assert_not @user.valid?
   end
 
-  def test_without_password
+  test 'without_password' do
     @user.password = ''
     @user.password_confirmation = ''
     assert_not @user.valid?
   end
 
-  def test_with_not_match_password_confirmation
+  test 'with_not_match_password_confirmation' do
     @user.password_confirmation = 'asdqwe234'
     assert_not @user.valid?
   end
 
-  def test_default_role_after_create
+  test 'default_role_after_create' do
     @user.save
     assert_equal 'student', @user.role
   end
 
-  def test_inactive_after_create
+  test 'inactive_after_create' do
     @user.save
     assert_not @user.active?
   end
 
-  def test_activate_user
+  test 'activate_user' do
     @user.save
     @user.activate!
     assert @user.active?
   end
 
-  def test_has_many_courses_and_feeds
+  test 'has_many_courses_and_feeds' do
     @user.role = 'lecturer'
     @user.save
     assert @user.respond_to?(:courses)
     assert @user.respond_to?(:feeds)
   end
 
-  def test_has_many_enrollments_and_enrolled_courses
+  test 'has_many_enrollments_and_enrolled_courses' do
     @user.save
     assert @user.respond_to?(:enrollments)
     assert @user.respond_to?(:enrolled_courses)
   end
 
-  def test_find_login_by
+  test 'test_find_login_by' do
     @user.save
     assert_equal @user, User.find_login_by('theuser')
     assert_equal @user, User.find_login_by('theuser@email.com')

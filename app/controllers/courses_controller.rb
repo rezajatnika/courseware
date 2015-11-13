@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :require_login, only: [:show]
+  before_action :require_login, only: [:new, :create, :show]
   before_action :authorize_user, only: [:new, :create]
 
   def index

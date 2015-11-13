@@ -8,7 +8,6 @@ gem 'uglifier',     '2.7.2'
 gem 'jquery-rails', '4.0.5'
 gem 'turbolinks',   '2.5.3'
 gem 'authlogic',    '3.4.6'
-gem 'responders',   '2.1.0'
 gem 'local_time',   '1.0.3'
 
 group :doc do

@@ -2,13 +2,17 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   class NoLoggedInUser < UsersControllerTest
-    def test_should_get_new
+    def setup
+      ActionMailer::Base.deliveries.clear
+    end
+
+    test 'should_get_new' do
       get :new
       assert_response 200
       assert_template layout: 'layouts/application'
     end
 
-    def test_should_create_user
+    test 'should_create_user' do
       assert_difference('User.count') do
         post :create, user: {
           username: 'theuser',
@@ -27,7 +31,7 @@ class UsersControllerTest < ActionController::TestCase
       UserSession.create(@user)
     end
 
-    def test_should_not_get_new
+    test 'should_not_get_new' do
       get :new
       assert_response 302
       assert_redirected_to root_path

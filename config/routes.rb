@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :enrollments, only: [:create, :destroy]
 
   # APIs
-  namespace :api, defaults: {format: :json} do
+  namespace :api do
     resources :courses, only: [:index, :show]
   end
 

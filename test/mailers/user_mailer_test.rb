@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class UserMailerTest < ActionMailer::TestCase
-  def test_activation_instructions
-    user = users(:testuser)
+  test 'test_activation_instructions' do
+    user = users(:student)
     mail = UserMailer.activation_instructions(user)
 
     assert_equal 'Activation Instructions', mail.subject

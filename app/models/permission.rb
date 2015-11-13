@@ -20,11 +20,6 @@ class Permission
     end
   end
 
-  # allow?(params[:controller], params[:action], current_resource)
-  # if user.admin?
-  # allowed = true
-  # else
-  # allowed = @allowed_actions
   def allow?(controller, action, resource = nil)
     allowed = @allow_all || @allowed_actions[[controller.to_s, action.to_s]]
     allowed && (allowed == true || resource && allowed.call(resource))

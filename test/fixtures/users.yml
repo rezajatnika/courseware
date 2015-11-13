@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-testuser:
-  username: testuser
-  email: testuser@email.com
+student:
+  username: student
+  email: student@email.com
+  active: true
+  role: 0
   password_salt: <%= salt = Authlogic::Random.hex_token %>
   crypted_password: <%= Authlogic::CryptoProviders::SCrypt.encrypt('asdqwe123' + salt) %>
   persistence_token: <%= Authlogic::Random.hex_token %>
@@ -12,7 +14,7 @@ lecturer:
   username: lecturer
   email: lecturer@email.com
   active: true
-  role: lecturer
+  role: 1
   password_salt: <%= salt = Authlogic::Random.hex_token %>
   crypted_password: <%= Authlogic::CryptoProviders::SCrypt.encrypt('asdqwe123' + salt) %>
   persistence_token: <%= Authlogic::Random.hex_token %>

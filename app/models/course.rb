@@ -11,6 +11,7 @@ class Course < ActiveRecord::Base
   # Validations
   validates :name, presence: true
   validates :code, presence: true
+  validates :lecturer_id, presence: true
 
   def as_json(options = {})
     super(only: [:id, :name, :code])
@@ -28,13 +29,5 @@ class Course < ActiveRecord::Base
 
   def generate_slug
     self.slug ||= name.parameterize
-  end
-
-  def current_permission
-    @current_permission ||= Permission.new(current_user)
-  end
-
-  def authorize
-    # TODO: Implement authorize method on course model
   end
 end
