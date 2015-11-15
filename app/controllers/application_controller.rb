@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  before_filter :set_mailer_host
+
+  # Includes
   include ApplicationHelper
 
   # Prevent CSRF attacks by raising an exception.
@@ -14,6 +17,10 @@ class ApplicationController < ActionController::Base
   delegate :allow_param?, to: :current_permission
 
   private
+
+  def set_mailer_host
+    ActionMailer::Base.default_url_options[:host] = request.host_with_port
+  end
 
   def require_login
     unless current_user
