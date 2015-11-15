@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class UserSignupTest < ActionDispatch::IntegrationTest
-
   def setup
     ActionMailer::Base.deliveries.clear
   end
@@ -20,12 +19,11 @@ class UserSignupTest < ActionDispatch::IntegrationTest
   end
 
   test 'test_valid_information' do
-
     get new_user_path
     assert_difference('User.count') do
       post users_path, user: {
-        username: 'username',
-        email: 'user@email.net',
+        username: 'validuser',
+        email: 'validuser@email.net',
         password: 'asdqwe123',
         password_confirmation: 'asdqwe123'
       }
@@ -41,7 +39,7 @@ class UserSignupTest < ActionDispatch::IntegrationTest
 
     # Get user activation instructions
     activate_authlogic
-    get activate_path(user.perishable_token)
+    get activate_url(user.perishable_token)
     assert User.find_by_username(user.username).active?
 
     # User will automatically logged in

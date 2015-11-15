@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   after_initialize :set_default_role, if: :new_record?
 
+  USERNAME_REGEX = /\A[a-zA-Z0-9_][a-zA-Z0-9\.+\-_@]+\z/
+
   # Associations
   has_many :enrollments, foreign_key: 'student_id', dependent: :destroy
   has_many :courses, foreign_key: 'lecturer_id', dependent: :destroy
@@ -10,8 +12,15 @@ class User < ActiveRecord::Base
   # User authentication
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::SCrypt
-    c.perishable_token_valid_for = 1.weeks
-    c.login_field = :username
+    c.validates_length_of_login_field_options = { in: 5..25 }
+    c.validates_format_of_login_field_options = {
+      with: USERNAME_REGEX,
+      message: 'should use only letters, numbers, and .-_@+ please'
+    }
+    c.merge_validates_format_of_email_field_options(
+      message: 'should use valid email address format'
+    )
+    c.merge_validates_length_of_password_field_options(in: 8..30)
   end
 
   def self.find_login_by(login)

@@ -5,18 +5,22 @@
       <div class="fieldForm">
         <%= f.label :username %>
         <%= f.text_field :username %>
+        <%= ferror_messages(@user, :username) %>
       </div>
       <div class="fieldForm">
         <%= f.label :email %>
         <%= f.text_field :email %>
+        <%= ferror_messages(@user, :email) %>
       </div>
       <div class="fieldForm">
         <%= f.label :password %>
         <%= f.password_field :password %>
+        <%= ferror_messages(@user, :password) %>
       </div>
       <div class="fieldForm">
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation %>
+        <%= ferror_messages(@user, :password_confirmation) %>
       </div>
       <%= f.submit 'Register' %>
     <% end %>
