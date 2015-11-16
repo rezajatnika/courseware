@@ -51,21 +51,14 @@ class ApplicationController < ActionController::Base
         params[:controller],
         params[:action])
       begin
-        redirect_to :back, warning: 'Not authorized!'
+        unless session[:last_back] = request.env['HTTP_REFERER']
+          redirect_to :back, warning: 'Not authorized!'
+        else
+          raise ActionController::RedirectBackError
+        end
       rescue ActionController::RedirectBackError
         redirect_to root_path, warning: 'Not authorized!'
       end
-    end
-  end
-
-  def authorize
-    if current_permission.allow?(
-        params[:controller],
-        params[:action],
-        current_resource)
-      current_permission.permit_params!(params)
-    else
-      redirect_to root_path, warning: 'Not authorized!'
     end
   end
 end
