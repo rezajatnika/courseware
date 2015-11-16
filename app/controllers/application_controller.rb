@@ -49,8 +49,7 @@ class ApplicationController < ActionController::Base
   def authorize_user
     unless current_permission.allow?(
         params[:controller],
-        params[:action],
-        current_resource)
+        params[:action])
       begin
         redirect_to :back, warning: 'Not authorized!'
       rescue ActionController::RedirectBackError

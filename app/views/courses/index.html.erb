@@ -13,7 +13,33 @@
       <% end %>
     <% end %>
   </div>
+
   <% if allow?(:courses, :new) %>
-    <%= link_to 'New Course', new_course_path %>
+    <a href="#new-course-modal">New Course</a>
+
+    <div id="new-course-modal" class="modal">
+      <div class="modal-container">
+        <div class="modal-header">
+          New Course
+          <a href="#close" class="modal-close">&times;</a>
+        </div>
+
+        <div class="modal-body">
+          <div row>
+            <%= form_for current_user.courses.new do |f| %>
+              <div class="form-field">
+                <%= f.label :name, 'Course Name' %>
+                <%= f.text_field :name, required: true %>
+              </div>
+              <div class="form-field">
+                <%= f.label :code, 'Course Code' %>
+                <%= f.text_field :code, required: true %>
+              </div>
+              <div class="form-field"><%= f.submit 'Submit' %></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 </main>

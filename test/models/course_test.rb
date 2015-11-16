@@ -42,19 +42,10 @@ class CourseTest < ActiveSupport::TestCase
     assert_equal users(:lecturer), @course.lecturer
   end
 
-  test 'should have many students' do
-    assert_equal User::ActiveRecord_Associations_CollectionProxy,
-      @course.students.class
-  end
-
-  test 'should have many feeds' do
-    assert_equal Feed::ActiveRecord_Associations_CollectionProxy,
-      @course.feeds.class
-  end
-
-  test 'should have many enrollments' do
-    assert_equal Enrollment::ActiveRecord_Associations_CollectionProxy,
-      @course.enrollments.class
+  test 'should have many students and feeds' do
+    [:students, :feeds, :enrollments].each do |attr|
+      assert @course.respond_to?(attr)
+    end
   end
 
   test 'should encode course' do

@@ -40,6 +40,12 @@ class CoursesControllerTest < ActionController::TestCase
       assert_response 302
       assert_redirected_to root_path
     end
+
+    test 'should not create course' do
+      assert_no_difference('Course.count') do
+        post :create, course: { name: 'Dota 2 Basic', code: 'dt-101' }
+      end
+    end
   end
 
   class LecturerLoggedIn < CoursesControllerTest
