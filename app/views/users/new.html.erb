@@ -1,28 +1,28 @@
 <div row>
   <div column="4 +4">
-    <h2>Register</h2>
+    <h2>Sign Up</h2>
     <%= form_for @user do |f| %>
-      <div class="fieldForm">
+      <div class="form-field">
         <%= f.label :username %>
         <%= f.text_field :username %>
         <%= ferror_messages(@user, :username) %>
       </div>
-      <div class="fieldForm">
+      <div class="form-field">
         <%= f.label :email %>
         <%= f.text_field :email %>
         <%= ferror_messages(@user, :email) %>
       </div>
-      <div class="fieldForm">
+      <div class="form-field">
         <%= f.label :password %>
         <%= f.password_field :password %>
         <%= ferror_messages(@user, :password) %>
       </div>
-      <div class="fieldForm">
+      <div class="form-field">
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation %>
         <%= ferror_messages(@user, :password_confirmation) %>
       </div>
-      <%= f.submit 'Register' %>
+      <%= f.submit 'Sign up now!' %>
     <% end %>
   </div>
 </div>

@@ -73,4 +73,10 @@ class UserTest < ActiveSupport::TestCase
     assert_equal @user, User.find_login_by('theuser')
     assert_equal @user, User.find_login_by('theuser@email.com')
   end
+
+  test 'should change password' do
+    lect = users(:lecturer)
+    lect.change_current_password('asdqwe123', 'newpassword', 'newpassword')
+    assert lect.valid_password?('newpassword')
+  end
 end

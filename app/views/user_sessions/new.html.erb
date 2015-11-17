@@ -2,15 +2,15 @@
   <div column="4 +4">
     <h2>Login</h2>
     <%= form_for @user_session, url: user_session_path do |f| %>
-      <div class="fieldForm">
+      <div class="form-field">
         <%= f.label :username %>
         <%= f.text_field :username %>
       </div>
-      <div class="fieldForm">
+      <div class="form-field">
         <%= f.label :password %>
         <%= f.password_field :password %>
       </div>
-      <div class="fieldForm">
+      <div class="form-field">
         <%= f.check_box :remember_me  %>
         <%= f.label :remember_me %>
       </div>

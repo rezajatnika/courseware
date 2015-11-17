@@ -21,7 +21,8 @@ group :development, :test do
 end
 
 group :development do
-  gem 'thin',         '1.6.4'
-  gem 'hirb',         '0.7.3'
-  gem 'quiet_assets', '1.1.0'
+  gem 'better_errors', '2.1.1'
+  gem 'thin',          '1.6.4'
+  gem 'hirb',          '0.7.3'
+  gem 'quiet_assets',  '1.1.0'
 end

@@ -9,7 +9,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save_without_session_maintenance
       @user.deliver_activation_instructions!
-      redirect_to root_path, success: 'Please check your email!'
+      flash[:info] = %Q{
+        Please check activation instruction at your #{@user.email} account.
+      }
+      redirect_to root_path
     else
       render :new
     end

@@ -18,6 +18,11 @@ Rails.application.routes.draw do
     resources :courses, only: [:index, :show]
   end
 
+  # Settings
+  namespace :settings do
+    resource :password, only: [:show, :create]
+  end
+
   # Activations
   get 'activate/:activation_code', to: 'activations#create', as: 'activate'
 end

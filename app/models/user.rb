@@ -23,6 +23,15 @@ class User < ActiveRecord::Base
     c.merge_validates_length_of_password_field_options(in: 8..30)
   end
 
+  def change_current_password!(current, new_password, confirmation)
+    if (new_password == confirmation && self.valid_password?(current))
+      update_attributes!(
+        password: new_password,
+        password_confirmation: confirmation
+      )
+    end
+  end
+
   def self.find_login_by(login)
     find_by_username(login) || find_by_email(login)
   end
